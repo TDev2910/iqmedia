@@ -43,14 +43,15 @@ class PostController extends Controller
             ->get();
 
         // Lấy sản phẩm nổi bật và mới nhất
-        $featuredProducts = Product::with(['category', 'primaryImage'])
-            ->active()
-            ->featured()
+        $featuredProducts = Product::with('category')
+            ->where('status', 'active')
+            ->where('is_featured', true)
+            ->latest()
             ->take(8)
             ->get();
 
-        $latestProducts = Product::with(['category', 'primaryImage'])
-            ->active()
+        $latestProducts = Product::with('category')
+            ->where('status', 'active')
             ->latest()
             ->take(12)
             ->get();
