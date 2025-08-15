@@ -62,63 +62,40 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)  
     {    
-        try {
-            $data = $request->validated();      
-            
-            // Cập nhật slug nếu tên thay đổi
-            if ($data['name'] !== $product->name) {
-                $data['slug'] = $this->taoSlugDuyNhat($data['name'], $product->id);
-            } else {
-                // Giữ slug cũ nếu tên không thay đổi
-                unset($data['slug']);
-            }
-            
-            // Xử lý checkbox is_featured
-            $data['is_featured'] = $request->boolean('is_featured');
-            
-            // Lưu thông tin ảnh cũ để rollback nếu cần
-            $oldImage = $product->image;
-            
-            // Xử lý upload ảnh mới
-            if ($request->hasFile('image')) {
-                // Upload ảnh mới trước
-                $newImage = $this->xuLyUploadAnh($request->file('image'));
-                $data['image'] = $newImage;
-                
-                // Cập nhật product
-                $product->update($data);
-                
-                // Xóa ảnh cũ sau khi cập nhật thành công
-                if ($oldImage) {
-                    $this->xoaAnhCu($oldImage);
-                }
-            } else {
-                // Không có ảnh mới, chỉ cập nhật thông tin khác
-                $product->update($data);
-            }
-            
-            // Log hoạt động
-            \Log::info('Cập nhật sản phẩm thành công', [
-                'product_id' => $product->id,
-                'product_name' => $product->name,
-                'user_id' => auth()->id(),
-            ]);
-            
-            return redirect()->route('admin.products.index')
-                ->with('success', "Sản phẩm '{$product->name}' đã được cập nhật thành công!");
-                
-        } catch (\Exception $e) {
-            // Log lỗi
-            \Log::error('Lỗi cập nhật sản phẩm: ' . $e->getMessage(), [
-                'product_id' => $product->id,
-                'user_id' => auth()->id(),
-                'error' => $e->getTraceAsString()
-            ]);
-            
-            return back()
-                ->withInput()
-                ->with('error', 'Có lỗi xảy ra khi cập nhật sản phẩm. Vui lòng thử lại.');
+        $data = $request->validated();      
+        
+        // Tạo slug từ tên nếu tên thay đổi
+        if ($data['name'] !== $product->name) {
+            $data['slug'] = Str::slug($data['name']);
         }
+        
+        // Xử lý checkbox is_featured
+        $data['is_featured'] = $request->boolean('is_featured');
+        
+        // Xử lý upload ảnh mới
+        if ($request->hasFile('image')) {
+            // Xóa ảnh cũ nếu có
+            if ($product->image && file_exists(public_path('storage/' . $product->image))) {
+                unlink(public_path('storage/' . $product->image));
+            }
+            
+            // Upload ảnh mới
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            
+            $uploadPath = public_path('storage/products');
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+            
+            $image->move($uploadPath, $imageName);
+            $data['image'] = 'products/' . $imageName;
+        }
+        
+        $product->update($data);       
+        
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Sản phẩm đã được cập nhật thành công!');
     }
     
     public function destroy(Product $product)
