@@ -71,23 +71,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Dashboard admin
     Route::get('/', [PostController::class, 'index'])->name('index');
     
-    // ===== QUẢN LÝ BÀI VIẾT =====
-    Route::prefix('posts')->name('posts.')->group(function () {
-        Route::get('/', [PostController::class, 'index'])->name('index');
-        Route::get('/create', [PostController::class, 'create'])->name('create');
-        Route::post('/', [PostController::class, 'store'])->name('store');
-        Route::get('/{id}', [PostController::class, 'show'])->name('show');
-        Route::get('/{id}/edit', [PostController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [PostController::class, 'update'])->name('update');
-        Route::delete('/{id}', [PostController::class, 'destroy'])->name('destroy');
-        
-        // Upload ảnh cho bài viết
-        Route::post('/upload-image', [PostController::class, 'uploadImage'])->name('upload-image');
-        
-        // Lọc theo loại
-        Route::get('/dich-vu', [PostController::class, 'dichVu'])->name('dich-vu');
-        Route::get('/quang-cao', [PostController::class, 'quangCao'])->name('quang-cao');
-    });
+    // ===== QUẢN LÝ BÀI VIẾT - Routes tương thích với views cũ =====
+    Route::get('/create', [PostController::class, 'create'])->name('create');
+    Route::post('/', [PostController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [PostController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [PostController::class, 'update'])->name('update');
+    Route::delete('/{id}', [PostController::class, 'destroy'])->name('destroy');
+    Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
+    Route::post('/upload-image', [PostController::class, 'uploadImage'])->name('uploadImage');
+    Route::get('/dich-vu', [PostController::class, 'dichVu'])->name('dichvu');
+    Route::get('/quang-cao', [PostController::class, 'quangCao'])->name('quangcao');
     
     // ===== QUẢN LÝ SẢN PHẨM =====
     Route::resource('products', AdminProductController::class)->names([

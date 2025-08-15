@@ -128,4 +128,22 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('admin.index')->with('success', 'Đã xóa bài viết!');
     }
+
+    /**
+     * Hiển thị danh sách bài viết dịch vụ
+     */
+    public function dichVu()
+    {
+        $posts = Post::where('category', 'dich-vu')->latest()->get();
+        return view('admin.posts.index', compact('posts'));
+    }
+
+    /**
+     * Hiển thị danh sách bài viết quảng cáo
+     */
+    public function quangCao()
+    {
+        $posts = Post::where('category', 'quang-cao')->latest()->get();
+        return view('admin.posts.index', compact('posts'));
+    }
 }
