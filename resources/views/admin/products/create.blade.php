@@ -53,9 +53,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="price">Giá <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control @error('price') is-invalid @enderror" 
-                                           id="price" name="price" value="{{ old('price') }}" required>
+                                    <label for="price">Giá gốc <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control @error('price') is-invalid @enderror" 
+                                               id="price" name="price" value="{{ old('price') }}" 
+                                               min="1000" step="1000" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">đ</span>
+                                        </div>
+                                    </div>
                                     @error('price')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -63,9 +69,40 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="stock_quantity">Số lượng</label>
+                                    <label for="sale_price">Giá khuyến mãi</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control @error('sale_price') is-invalid @enderror" 
+                                               id="sale_price" name="sale_price" value="{{ old('sale_price') }}" 
+                                               min="1000" step="1000">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">đ</span>
+                                        </div>
+                                    </div>
+                                    <small class="form-text text-muted">Phải nhỏ hơn giá gốc</small>
+                                    @error('sale_price')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sku">Mã sản phẩm (SKU)</label>
+                                    <input type="text" class="form-control @error('sku') is-invalid @enderror" 
+                                           id="sku" name="sku" value="{{ old('sku') }}">
+                                    <small class="form-text text-muted">Để trống để tự động tạo</small>
+                                    @error('sku')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="stock_quantity">Số lượng tồn kho</label>
                                     <input type="number" class="form-control @error('stock_quantity') is-invalid @enderror" 
-                                           id="stock_quantity" name="stock_quantity" value="{{ old('stock_quantity', 0) }}">
+                                           id="stock_quantity" name="stock_quantity" value="{{ old('stock_quantity', 0) }}" min="0">
                                     @error('stock_quantity')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -102,10 +139,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status">Trạng thái</label>
+                            <label for="status">Trạng thái <span class="text-danger">*</span></label>
                             <select class="form-control @error('status') is-invalid @enderror" 
                                     id="status" name="status" required>
-                                <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Hoạt động</option>
+                                <option value="">Chọn trạng thái</option>
+                                <option value="active" {{ old('status', 'active') == 'active' ? 'selected' : '' }}>Hoạt động</option>
                                 <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Tạm dừng</option>
                                 <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Nháp</option>
                             </select>
