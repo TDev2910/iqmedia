@@ -64,9 +64,9 @@ class ProductController extends Controller
     {    
         $data = $request->validated();      
         
-        // Tạo slug từ tên nếu tên thay đổi
+        // Cập nhật slug nếu tên thay đổi
         if ($data['name'] !== $product->name) {
-            $data['slug'] = Str::slug($data['name']);
+            $data['slug'] = $this->taoSlugDuyNhat($data['name'], $product->id);
         }
         
         // Xử lý checkbox is_featured
@@ -74,22 +74,11 @@ class ProductController extends Controller
         
         // Xử lý upload ảnh mới
         if ($request->hasFile('image')) {
-            // Xóa ảnh cũ nếu có
-            if ($product->image && file_exists(public_path('storage/' . $product->image))) {
-                unlink(public_path('storage/' . $product->image));
-            }
+            // Xóa ảnh cũ an toàn
+            $this->xoaAnhCu($product->image);
             
             // Upload ảnh mới
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            
-            $uploadPath = public_path('storage/products');
-            if (!file_exists($uploadPath)) {
-                mkdir($uploadPath, 0755, true);
-            }
-            
-            $image->move($uploadPath, $imageName);
-            $data['image'] = 'products/' . $imageName;
+            $data['image'] = $this->xuLyUploadAnh($request->file('image'));
         }
         
         $product->update($data);       

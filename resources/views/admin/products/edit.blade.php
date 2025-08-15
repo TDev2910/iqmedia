@@ -20,7 +20,6 @@
                 <form action="{{ route('admin.products.update', $product) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -95,6 +94,7 @@
                                     <label for="sku">Mã sản phẩm (SKU)</label>
                                     <input type="text" class="form-control @error('sku') is-invalid @enderror" 
                                            id="sku" name="sku" value="{{ old('sku', $product->sku) }}">
+                                    <small class="form-text text-muted">Mã hiện tại: {{ $product->sku }}</small>
                                     @error('sku')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -135,26 +135,38 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="image">Hình ảnh sản phẩm</label>
-                                    <input type="file" class="form-control-file @error('image') is-invalid @enderror" 
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" 
                                            id="image" name="image" accept="image/*">
                                     <small class="form-text text-muted">Chọn ảnh mới để thay thế (tối đa 2MB)</small>
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                
+                            </div>
+                            <div class="col-md-6">
                                 {{-- Hiển thị ảnh hiện tại --}}
                                 @if($product->image)
-                                    <div class="mt-2">
-                                        <p class="text-muted">Ảnh hiện tại:</p>
-                                        <img src="{{ asset('storage/' . $product->image) }}" 
-                                             alt="{{ $product->name }}" 
-                                             class="img-thumbnail" 
-                                             style="max-width: 200px;">
+                                    <div class="form-group">
+                                        <label>Ảnh hiện tại:</label>
+                                        <div class="mt-2">
+                                            <img src="{{ asset('storage/' . $product->image) }}" 
+                                                 alt="{{ $product->name }}" 
+                                                 class="img-thumbnail" 
+                                                 style="max-width: 200px; max-height: 150px;">
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="form-group">
+                                        <label>Ảnh hiện tại:</label>
+                                        <div class="mt-2">
+                                            <p class="text-muted">Chưa có ảnh</p>
+                                        </div>
                                     </div>
                                 @endif
                             </div>
-                            
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="status">Trạng thái <span class="text-danger">*</span></label>
@@ -174,15 +186,25 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-
-                                <div class="form-check mt-3">
-                                    <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured" value="1" 
-                                           {{ old('is_featured', $product->is_featured) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="is_featured">
-                                        Sản phẩm nổi bật
-                                    </label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Thông tin thêm:</label>
+                                    <div class="mt-2">
+                                        <p class="mb-1"><strong>Lượt xem:</strong> {{ number_format($product->views ?? 0) }}</p>
+                                        <p class="mb-1"><strong>Ngày tạo:</strong> {{ $product->created_at->format('d/m/Y H:i') }}</p>
+                                        <p class="mb-1"><strong>Cập nhật:</strong> {{ $product->updated_at->format('d/m/Y H:i') }}</p>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured" value="1" 
+                                   {{ old('is_featured', $product->is_featured) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="is_featured">
+                                <strong>Sản phẩm nổi bật</strong>
+                            </label>
                         </div>
                     </div>
                     
