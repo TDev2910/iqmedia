@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -41,7 +42,20 @@ class PostController extends Controller
             ->take(8)
             ->get();
 
-        return view('pages.home', compact('dichVuPosts', 'quangCaoPosts'));
+        // Lấy sản phẩm nổi bật và mới nhất
+        $featuredProducts = Product::with(['category', 'primaryImage'])
+            ->active()
+            ->featured()
+            ->take(8)
+            ->get();
+
+        $latestProducts = Product::with(['category', 'primaryImage'])
+            ->active()
+            ->latest()
+            ->take(12)
+            ->get();
+
+        return view('pages.home', compact('dichVuPosts', 'quangCaoPosts', 'featuredProducts', 'latestProducts'));
     }
     /**
      * Show the form for creating a new resource.
