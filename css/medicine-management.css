@@ -1,0 +1,704 @@
+/* Medicine Management Styles */
+
+/* Header Control Bar */
+.header-control-bar {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+}
+
+.controls-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+}
+
+.search-container .input-group-text {
+    background-color: #f8f9fa;
+    border-right: none;
+    color: #6c757d;
+}
+
+.search-container .form-control {
+    border-left: none;
+    padding-left: 0;
+}
+
+.search-container .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-buttons .btn {
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.action-buttons .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Utility Icons */
+.utility-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 1rem;
+}
+
+.utility-icons .btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Content Area */
+.content-area {
+    margin-top: 1.5rem;
+}
+
+/* Sidebar Filter */
+.sidebar-filter {
+    padding: 1rem;
+}
+
+.filter-section {
+    margin-bottom: 1.5rem;
+}
+
+.filter-section:last-child {
+    margin-bottom: 0;
+}
+
+.filter-section label {
+    display: block;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    position: relative;
+}
+
+.filter-section .create-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.filter-section .create-link:hover {
+    text-decoration: underline;
+}
+
+.filter-section .form-select {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 0.875rem;
+}
+
+.filter-section .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Radio Group */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.radio-item input[type="radio"] {
+    margin: 0;
+}
+
+.radio-item label {
+    margin: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+/* Table Section */
+.table-section {
+    padding: 1rem;
+}
+
+.product-table {
+    margin-bottom: 0;
+}
+
+.product-table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.875rem;
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+}
+
+.product-table tbody td {
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 0.875rem;
+}
+
+.product-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Product Row */
+.product-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.product-row:hover {
+    background-color: #f8f9fa !important;
+}
+
+.product-row.selected {
+    background-color: #e3f2fd;
+}
+
+/* Product Image */
+.product-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+/* Product Details */
+.product-code {
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.product-name {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.product-abbreviation {
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+/* Detail Row */
+.detail-row {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.detail-content {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image Detail Large */
+.product-image-detail-large img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+/* Product Header */
+.product-header {
+    margin-bottom: 2rem;
+}
+
+.product-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.product-category {
+    margin-bottom: 1rem;
+}
+
+.product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.product-tags .badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+}
+
+/* Tabs */
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 1.5rem;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    border-radius: 0;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    margin-right: 2rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+.nav-tabs .nav-link.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+    background-color: transparent;
+}
+
+/* Tab Content */
+.tab-content {
+    padding: 0;
+}
+
+.tab-pane {
+    padding: 1rem 0;
+}
+
+/* Info Group */
+.info-group {
+    margin-bottom: 2rem;
+}
+
+.info-group h6 {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.info-group .table {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+}
+
+.info-group .table th {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    font-weight: 600;
+    border: 1px solid #bbdefb;
+    padding: 0.75rem;
+}
+
+.info-group .table td {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+.info-group .table td strong {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Description Content */
+.description-content {
+    padding: 1rem 0;
+}
+
+.description-content .table td {
+    padding: 1.5rem;
+    line-height: 1.6;
+    color: #495057;
+}
+
+/* Inventory Content */
+.inventory-content {
+    padding: 1rem 0;
+}
+
+/* Action Buttons Container */
+.action-buttons-container {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.left-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.right-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-buttons-container .btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.action-buttons-container .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Summary Section */
+.summary-section {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    margin-top: 1rem;
+}
+
+.summary-section .text-muted {
+    font-size: 0.875rem;
+}
+
+/* Pagination */
+.pagination-sm .page-link {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+.pagination-sm .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 1.5rem;
+}
+
+.modal-footer .btn {
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+/* Form Controls */
+.form-control:focus,
+.form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge.bg-primary {
+    background-color: #007bff !important;
+}
+
+.badge.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.badge.bg-light {
+    background-color: #f8f9fa !important;
+    color: #495057 !important;
+    border: 1px solid #dee2e6;
+}
+
+/* Alert Styles */
+.alert {
+    border-radius: 8px;
+    border: none;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert .fas {
+    margin-right: 0.5rem;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #495057;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+/* Checkbox Styles */
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.form-check-input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button Variants */
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-outline-light {
+    color: #6c757d;
+    border-color: #f8f9fa;
+    background-color: #f8f9fa;
+}
+
+.btn-outline-light:hover {
+    color: #495057;
+    background-color: #e9ecef;
+    border-color: #e9ecef;
+}
+
+/* Custom Button Colors */
+.btn-success-custom {
+    background-color: #1db46a;
+    border-color: #1db46a;
+    color: white;
+}
+
+.btn-success-custom:hover {
+    background-color: #17a05b;
+    border-color: #17a05b;
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-control-bar .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .controls-section {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .search-container {
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+    
+    .action-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .utility-icons {
+        margin-left: 0;
+    }
+    
+    .product-table {
+        font-size: 0.75rem;
+    }
+    
+    .product-table th,
+    .product-table td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .detail-content {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+    
+    .product-title {
+        font-size: 1.25rem;
+    }
+    
+    .nav-tabs .nav-link {
+        margin-right: 1rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .action-buttons-container .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .left-actions,
+    .right-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .header-control-bar {
+        padding: 1rem;
+    }
+    
+    .content-area .row {
+        margin: 0;
+    }
+    
+    .content-area .col-xl-3,
+    .content-area .col-xl-9 {
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.75rem;
+    }
+    
+    .modal-dialog {
+        margin: 1rem;
+    }
+    
+    .modal-body,
+    .modal-header,
+    .modal-footer {
+        padding: 1rem;
+    }
+}
