@@ -23,7 +23,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="primary-footer-nav">
+                <div class="primary-footer-nav | text-center-only-sm">
                     <nav class="first-footer-nav | flow" style="--flow-spacer:1em">
                         <h5 class="footer-section-title | fw-bold" onclick="toggleSubmenu(this)">Về chúng tôi</h5>
                         <ul class="list" aria-label="footer" role="list">
@@ -50,7 +50,7 @@
                      </nav>
                 </div>
                 <div class="primary-footer-logo-social | flow">
-                    <h5 class="footer-section-title | fw-bold">Liên kết xã hội</h5>
+                    <h5 class="footer-section-title | text-center-only-sm fw-bold">Liên kết xã hội</h5>
                     <ul class="social-list" role="list">
                         <li>
                             <a aria-label="facebook" href="">

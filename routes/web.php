@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\PostController as UserPostController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartItemController;
+
 
 // Trang chủ
 Route::get('/', [UserPostController::class, 'index'])->name('home');
@@ -65,6 +68,14 @@ Route::prefix('api')->group(function () {
 
 //route admin
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+
+    // Dashboard admin
+    Route::get('/', [PostController::class, 'index'])->name('index');
+    
+    //quan ly bai viet
+    Route::get('/create', [PostController::class, 'create'])->name('create');
+    Route::post('/', [PostController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [PostController::class, 'edit'])->name('edit');Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     
     // Dashboard admin
     Route::get('/', [PostController::class, 'index'])->name('index');
@@ -73,6 +84,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/create', [PostController::class, 'create'])->name('create');
     Route::post('/', [PostController::class, 'store'])->name('store');
     Route::get('/{id}/edit', [PostController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [PostController::class, 'update'])->name('update');
+    Route::delete('/{id}', [PostController::class, 'destroy'])->name('destroy');
+    Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
+    Route::post('/upload-image', [PostController::class, 'uploadImage'])->name('uploadImage');
+    Route::get('/dich-vu', [PostController::class, 'dichVu'])->name('dichvu');
+    Route::get('/quang-cao', [PostController::class, 'quangCao'])->name('quangcao');
     Route::put('/{id}', [PostController::class, 'update'])->name('update');
     Route::delete('/{id}', [PostController::class, 'destroy'])->name('destroy');
     Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
@@ -95,7 +112,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('products/{product}/images/{image}', [AdminProductController::class, 'deleteImage'])
         ->name('products.delete-image');
 });
+});
 
 // ===== ROUTE FALLBACK CHO SẢN PHẨM =====
 // Đặt cuối cùng để tránh xung đột với các route khác
 Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
+
+// Cart item
+// Route::get('/cart-item/{id}',[CartItemController::class,'store']);
+
+Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/cart/add/{id}',[CartController::class,'addProduct'])->name('cart.add-cart-item');
+});

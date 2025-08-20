@@ -3,43 +3,53 @@
 @section('title', 'Trang chủ - IQ Media')
 
 @section('content')
+
     {{-- Banner Carousel --}}
     <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="margin-top: 0;">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0"
-                class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>  
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
         </div>
-        
+
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://iqmedia.com.vn/assets/slider_1.webp?1715932071" 
-                     class="d-block w-100 banner-image" 
-                     alt="Banner 1">
+                <img src="https://iqmedia.com.vn/assets/slider_1.webp?1715932071" class="d-block w-100 banner-image"
+                    alt="Banner 1">
             </div>
             <div class="carousel-item">
-                <img src="https://iqmedia.com.vn/assets/slider_2.webp?1715932071" 
-                     class="d-block w-100 banner-image" 
-                     alt="Banner 2">
+                <img src="https://iqmedia.com.vn/assets/slider_2.webp?1715932071" class="d-block w-100 banner-image"
+                    alt="Banner 2">
             </div>
         </div>
-        
+
         <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        
+
         <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
+    {{-- slider --}}
+    <section class="carousel | text-center padding-block-400">
+        <ul class="slider">
+            <li>
+                <img src="{{ asset('img/banner1.jpg') }}" alt="">
+            </li>
+            <li>
+                <img src="{{ asset('img/banner2.jpg') }}" alt="">
+            </li>
+        </ul>
+    </section>
+
     {{-- DỊCH VỤ --}}
     <section class="my-4">
         <div class="container custom-container">
-            <div class="border rounded p-3 bg-white shadow-sm"> 
+            <div class="border rounded p-3 bg-white shadow-sm">
                 {{-- Tiêu đề --}}
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2 class="fw-bold mb-2 pb-1 border-bottom border-3 border-warning">
@@ -52,18 +62,15 @@
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                             <div class="card h-100 shadow-sm service-card">
                                 {{-- Ảnh --}}
-                                <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none"> 
-                                    <img src="{{ Storage::url($post->image) }}"
-                                         class="card-img-top"
-                                         alt="{{ $post->title }}"
-                                         style="aspect-ratio: 3/2; object-fit: cover;">
+                                <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none">
+                                    <img src="{{ Storage::url($post->image) }}" class="card-img-top" alt="{{ $post->title }}"
+                                        style="aspect-ratio: 3/2; object-fit: cover;">
                                 </a>
 
                                 {{-- Body --}}
                                 <div class="card-body d-flex flex-column p-2">
                                     <h6 class="card-title mb-1">
-                                        <a href="{{ route('posts.show', $post->id) }}" 
-                                           class="text-dark text-decoration-none">
+                                        <a href="{{ route('posts.show', $post->id) }}" class="text-dark text-decoration-none">
                                             {{ Str::limit($post->title, 60) }}
                                         </a>
                                     </h6>
@@ -94,7 +101,7 @@
     {{-- Section QUẢNG CÁO --}}
     <section class="my-4">
         <div class="container custom-container">
-            <div class="border rounded p-3 bg-white shadow-sm"> 
+            <div class="border rounded p-3 bg-white shadow-sm">
                 {{-- Tiêu đề --}}
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2 class="fw-bold mb-2 pb-1 border-bottom border-3 border-primary">
@@ -108,18 +115,15 @@
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                             <div class="card h-100 shadow-sm service-card">
                                 {{-- Ảnh --}}
-                                <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none"> 
-                                    <img src="{{ Storage::url($post->image) }}"
-                                         class="card-img-top"
-                                         alt="{{ $post->title }}"
-                                         style="aspect-ratio: 3/2; object-fit: cover;">
+                                <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none">
+                                    <img src="{{ Storage::url($post->image) }}" class="card-img-top" alt="{{ $post->title }}"
+                                        style="aspect-ratio: 3/2; object-fit: cover;">
                                 </a>
 
                                 {{-- Body --}}
                                 <div class="card-body d-flex flex-column p-2">
                                     <h6 class="card-title mb-1">
-                                        <a href="{{ route('posts.show', $post->id) }}" 
-                                           class="text-dark text-decoration-none">
+                                        <a href="{{ route('posts.show', $post->id) }}" class="text-dark text-decoration-none">
                                             {{ Str::limit($post->title, 60) }}
                                         </a>
                                     </h6>
@@ -149,7 +153,7 @@
     {{-- Section sản phẩm --}}
     <section class="my-4">
         <div class="container custom-container">
-            <div class="border rounded p-3 bg-white shadow-sm"> 
+            <div class="border rounded p-3 bg-white shadow-sm">
                 {{-- Tiêu đề --}}
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2 class="fw-bold mb-2 pb-1 border-bottom border-3 border-success">
@@ -170,22 +174,20 @@
                                     @php
                                         $discount = round((($product->price - $product->sale_price) / $product->price) * 100);
                                     @endphp
-                                    <div class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 rounded-end" 
-                                         style="z-index: 1; font-size: 0.75rem;">
+                                    <div class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 rounded-end"
+                                        style="z-index: 1; font-size: 0.75rem;">
                                         -{{ $discount }}%
                                     </div>
                                 @endif
 
                                 {{-- Ảnh --}}
-                                <a href="{{ route('products.show', $product->slug) }}" class="text-decoration-none"> 
+                                <a href="{{ route('products.show', $product->slug) }}" class="text-decoration-none">
                                     @if($product->image)
-                                        <img src="{{ asset('storage/' . $product->image) }}"
-                                             class="card-img-top"
-                                             alt="{{ $product->name }}"
-                                             style="aspect-ratio: 3/2; object-fit: cover;">
+                                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
+                                            alt="{{ $product->name }}" style="aspect-ratio: 3/2; object-fit: cover;">
                                     @else
                                         <div class="card-img-top d-flex align-items-center justify-content-center bg-light"
-                                             style="aspect-ratio: 3/2;">
+                                            style="aspect-ratio: 3/2;">
                                             <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
                                         </div>
                                     @endif
@@ -194,8 +196,8 @@
                                 {{-- Body --}}
                                 <div class="card-body d-flex flex-column p-2">
                                     <h6 class="card-title mb-1">
-                                        <a href="{{ route('products.show', $product->slug) }}" 
-                                           class="text-dark text-decoration-none">
+                                        <a href="{{ route('products.show', $product->slug) }}"
+                                            class="text-dark text-decoration-none">
                                             {{ Str::limit($product->name, 50) }}
                                         </a>
                                     </h6>

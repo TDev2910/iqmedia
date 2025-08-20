@@ -31,9 +31,6 @@ return new class extends Migration
             $table->integer('sort_order')->default(0);
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
-            
-            $table->index(['status', 'is_featured']);
-            $table->index('slug');
         });
     }
 

@@ -109,6 +109,14 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+     /**
+     * Quan hệ với bảng cart_item (giỏ hàng)
+     */
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
     /**
      * Lấy ảnh chính của sản phẩm
      */

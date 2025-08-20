@@ -150,7 +150,7 @@ class AuthController extends Controller
     {
         if ($user->role === 'admin') {
             return redirect()->route('admin.index')
-                ->with('success', 'Chào mừng Admin ' . $user->first_name . '!');
+                ->with('success', 'Chào mừng Admin ' . $user->first_name . ' ' . $user->last_name . '!');
         }
 
         return redirect()->route('home')

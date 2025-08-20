@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Category;
 
-class ProductSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.

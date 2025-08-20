@@ -96,7 +96,10 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($products as $productData) {
-            Product::create($productData);
+            Product::firstOrCreate(
+                ['slug' => $productData['slug']], // điều kiện duy nhất
+                $productData                     // dữ liệu nếu chưa tồn tại
+            );
         }
     }
 }

@@ -55,9 +55,12 @@
             @endif
             
             <div class="mb-4">
-                <button class="btn btn-primary btn-lg me-2">
-                    <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ hàng
-                </button>
+                <form action="{{ route('user.cart.add-cart-item',$product->id) }}" method="POST">
+                    @csrf
+                    <button class="btn btn-primary btn-lg me-2">
+                        <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ hàng
+                    </button>
+                </form>
                 <button class="btn btn-outline-secondary">
                     <i class="bi bi-heart"></i>
                 </button>
